@@ -1,7 +1,7 @@
 package Controlador;
 
 public class CTRL_ACCESO {
-    public static void main(){
+    public static void main(String[] args){
         
     }
 }
