@@ -5,6 +5,17 @@ import Modelo.*;
 
 public class Ctrl_Trabajos {
     private static Ctrl_Trabajos uniqueInstance = null;
+    private IAcceso iAcceso;
+    private ICargar iCargar;
+    private IConsulta iConsulta;
+    private IPrincipalCom iPrincipalCom;
+    private IReportesCentro iReportesCentro;
+    private IReportesProf iReportesProf;
+    private IReportesTrabProf iReportesTrabProf;  
+    private ConjuntodeProfesores conjuntoProfs;
+    private ConjuntodeTrabajos conjuntoTrabj;
+    private Reporte reporte;
+    
     private Ctrl_Trabajos(){
         iAcceso = new IAcceso();
         iCargar = new ICargar();
@@ -13,6 +24,8 @@ public class Ctrl_Trabajos {
         iReportesCentro = new IReportesCentro();
         iReportesProf = new IReportesProf();
         iReportesTrabProf = new IReportesTrabProf();
+        conjuntoProfs = new ConjuntodeProfesores();
+        conjuntoTrabj = new ConjuntodeTrabajos();
         reporte = new Reporte();
         
     }
@@ -23,13 +36,4 @@ public class Ctrl_Trabajos {
         }
         return uniqueInstance;
     }
-    
-    private IAcceso iAcceso;
-    private ICargar iCargar;
-    private IConsulta iConsulta;
-    private IPrincipalCom iPrincipalCom;
-    private IReportesCentro iReportesCentro;
-    private IReportesProf iReportesProf;
-    private IReportesTrabProf iReportesTrabProf;  
-    private Reporte reporte;
 }
