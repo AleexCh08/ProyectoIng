@@ -36,4 +36,21 @@ public class Ctrl_Trabajos {
         }
         return uniqueInstance;
     }
+    
+    public void ocultarTodo(){
+        iAcceso.ocultar();
+        iCargar.ocultar();
+        iConsulta.ocultar();
+        iPrincipalCom.ocultar();
+        iReportesCentro.ocultar();
+        iReportesProf.ocultar();
+        iReportesTrabProf.ocultar();
+    }
+
+    public void principal() {
+        ocultarTodo();
+        iAcceso.setVisible(true);
+    }
+    
+     
 }

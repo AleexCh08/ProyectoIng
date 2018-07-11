@@ -1,21 +1,12 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Vista;
 
-/**
- *
- * @author alexander
- */
 public class IReportesProf extends javax.swing.JFrame {
 
-    /**
-     * Creates new form IReportesProf
-     */
     public IReportesProf() {
         initComponents();
+        this.setLocationRelativeTo(null); 
+        this.setResizable(false);
+        this.setTitle("IReportesProf");
     }
 
     /**
@@ -188,4 +179,8 @@ public class IReportesProf extends javax.swing.JFrame {
     private javax.swing.JLabel trabajos;
     private javax.swing.JButton volver;
     // End of variables declaration//GEN-END:variables
+
+    public void ocultar() {
+        this.setVisible(false);
+    }
 }

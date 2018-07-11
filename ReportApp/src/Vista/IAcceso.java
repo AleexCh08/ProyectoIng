@@ -1,21 +1,12 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Vista;
 
-/**
- *
- * @author alexander
- */
 public class IAcceso extends javax.swing.JFrame {
 
-    /**
-     * Creates new form IAcceso
-     */
     public IAcceso() {
         initComponents();
+        this.setLocationRelativeTo(null); 
+        this.setResizable(false);
+        this.setTitle("IAcceso");
     }
 
     /**
@@ -41,6 +32,11 @@ public class IAcceso extends javax.swing.JFrame {
         persInteresada.setText("Persona Interesada");
 
         salir.setText("Salir");
+        salir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                salirActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -75,6 +71,10 @@ public class IAcceso extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_salirActionPerformed
 
     /**
      * @param args the command line arguments
@@ -117,4 +117,8 @@ public class IAcceso extends javax.swing.JFrame {
     private javax.swing.JButton persInteresada;
     private javax.swing.JButton salir;
     // End of variables declaration//GEN-END:variables
+
+    public void ocultar() {
+        this.setVisible(false);
+    }
 }
