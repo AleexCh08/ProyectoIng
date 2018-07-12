@@ -1,12 +1,15 @@
 package Vista;
 
-public class IPrincipalCom extends javax.swing.JFrame {
+import Controlador.Ctrl_Trabajos;
 
-    public IPrincipalCom() {
+public class IPrincipalCom extends javax.swing.JFrame {
+    private Ctrl_Trabajos ctrl_trabajos;
+    public IPrincipalCom(Ctrl_Trabajos ctrl_trabajos) {
         initComponents();
         this.setLocationRelativeTo(null); 
         this.setResizable(false);
         this.setTitle("IPrincipalCom");
+        this.ctrl_trabajos = ctrl_trabajos;
     }
 
     /**
@@ -19,143 +22,164 @@ public class IPrincipalCom extends javax.swing.JFrame {
     private void initComponents() {
 
         seleccion = new javax.swing.JLabel();
-        cargarTrabajos = new javax.swing.JButton();
-        cargarProfesores = new javax.swing.JButton();
-        consultar = new javax.swing.JButton();
-        cancelar = new javax.swing.JButton();
-        trabajosProfCentro = new javax.swing.JButton();
-        trabajosCentro = new javax.swing.JButton();
-        trabajosProfesor = new javax.swing.JButton();
+        btnCargarTrabajos = new javax.swing.JButton();
+        btnCargarProfesores = new javax.swing.JButton();
+        btnConsultar = new javax.swing.JButton();
+        btnCancelar = new javax.swing.JButton();
+        btnProfesoresQuePresentaron = new javax.swing.JButton();
+        btnTrabajosPorCentro = new javax.swing.JButton();
+        btnTrabajosPorProfesor = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         seleccion.setText("Seleccione una Opción:");
 
-        cargarTrabajos.setText("Cargar Trabajos");
-
-        cargarProfesores.setText("Cargar Profesores");
-
-        consultar.setText("Consultar");
-
-        cancelar.setText("Cancelar");
-
-        trabajosProfCentro.setText("Reportar Trabajos de Profesores que Presentaron");
-
-        trabajosCentro.setText("Reportar Trabajos por Centro");
-        trabajosCentro.addActionListener(new java.awt.event.ActionListener() {
+        btnCargarTrabajos.setText("Cargar Trabajos");
+        btnCargarTrabajos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                trabajosCentroActionPerformed(evt);
+                btnCargarTrabajosActionPerformed(evt);
             }
         });
 
-        trabajosProfesor.setText("Reportar Trabajos por Porfesor");
+        btnCargarProfesores.setText("Cargar Profesores");
+        btnCargarProfesores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCargarProfesoresActionPerformed(evt);
+            }
+        });
+
+        btnConsultar.setText("Consultar");
+        btnConsultar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConsultarActionPerformed(evt);
+            }
+        });
+
+        btnCancelar.setText("Cancelar");
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarActionPerformed(evt);
+            }
+        });
+
+        btnProfesoresQuePresentaron.setText("Reportar Trabajos de Profesores que Presentaron");
+        btnProfesoresQuePresentaron.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnProfesoresQuePresentaronActionPerformed(evt);
+            }
+        });
+
+        btnTrabajosPorCentro.setText("Reportar Trabajos por Centro");
+        btnTrabajosPorCentro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTrabajosPorCentroActionPerformed(evt);
+            }
+        });
+
+        btnTrabajosPorProfesor.setText("Reportar Trabajos por Porfesor");
+        btnTrabajosPorProfesor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTrabajosPorProfesorActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(seleccion)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(45, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(seleccion))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(85, 85, 85)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(trabajosProfesor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(trabajosCentro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(132, 132, 132)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(cargarProfesores)
-                            .addComponent(cargarTrabajos, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(31, 31, 31)
-                        .addComponent(trabajosProfCentro))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(129, 129, 129)
-                        .addComponent(consultar, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(166, 166, 166)
-                        .addComponent(cancelar)))
-                .addContainerGap(24, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(btnProfesoresQuePresentaron, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnTrabajosPorCentro, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnTrabajosPorProfesor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnCargarProfesores, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnCargarTrabajos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnConsultar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(50, 50, 50))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(btnCancelar)
+                        .addGap(25, 25, 25))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(29, 29, 29)
                 .addComponent(seleccion)
-                .addGap(18, 18, 18)
-                .addComponent(cargarTrabajos, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27)
+                .addComponent(btnCargarTrabajos, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(7, 7, 7)
+                .addComponent(btnCargarProfesores, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(cargarProfesores, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(12, 12, 12)
-                .addComponent(trabajosProfesor, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnTrabajosPorProfesor, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(trabajosCentro, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnTrabajosPorCentro, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(trabajosProfCentro, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnProfesoresQuePresentaron, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(consultar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29)
-                .addComponent(cancelar)
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addComponent(btnConsultar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                .addComponent(btnCancelar)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void trabajosCentroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_trabajosCentroActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_trabajosCentroActionPerformed
+    private void btnTrabajosPorCentroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTrabajosPorCentroActionPerformed
+        ctrl_trabajos.reportesCentro();
+    }//GEN-LAST:event_btnTrabajosPorCentroActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(IPrincipalCom.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(IPrincipalCom.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(IPrincipalCom.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(IPrincipalCom.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
+    private void btnCargarTrabajosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCargarTrabajosActionPerformed
+        ctrl_trabajos.cargar();
+    }//GEN-LAST:event_btnCargarTrabajosActionPerformed
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new IPrincipalCom().setVisible(true);
-            }
-        });
-    }
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        ctrl_trabajos.principal();
+    }//GEN-LAST:event_btnCancelarActionPerformed
+
+    private void btnTrabajosPorProfesorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTrabajosPorProfesorActionPerformed
+        ctrl_trabajos.reportesProf();
+    }//GEN-LAST:event_btnTrabajosPorProfesorActionPerformed
+
+    private void btnProfesoresQuePresentaronActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProfesoresQuePresentaronActionPerformed
+        ctrl_trabajos.reportesTrabProf();
+    }//GEN-LAST:event_btnProfesoresQuePresentaronActionPerformed
+
+    private void btnCargarProfesoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCargarProfesoresActionPerformed
+         ctrl_trabajos.cargar();
+    }//GEN-LAST:event_btnCargarProfesoresActionPerformed
+
+    private void btnConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarActionPerformed
+        ctrl_trabajos.consulta();
+    }//GEN-LAST:event_btnConsultarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton cancelar;
-    private javax.swing.JButton cargarProfesores;
-    private javax.swing.JButton cargarTrabajos;
-    private javax.swing.JButton consultar;
+    private javax.swing.JButton btnCancelar;
+    private javax.swing.JButton btnCargarProfesores;
+    private javax.swing.JButton btnCargarTrabajos;
+    private javax.swing.JButton btnConsultar;
+    private javax.swing.JButton btnProfesoresQuePresentaron;
+    private javax.swing.JButton btnTrabajosPorCentro;
+    private javax.swing.JButton btnTrabajosPorProfesor;
     private javax.swing.JLabel seleccion;
-    private javax.swing.JButton trabajosCentro;
-    private javax.swing.JButton trabajosProfCentro;
-    private javax.swing.JButton trabajosProfesor;
     // End of variables declaration//GEN-END:variables
 
     public void ocultar() {
         this.setVisible(false);
     }
+    public void deshabilitar() {
+      btnCargarTrabajos.setEnabled(false);
+      btnCargarProfesores.setEnabled(false);
+      btnTrabajosPorProfesor.setEnabled(false);
+      btnTrabajosPorCentro.setEnabled(false);
+      btnProfesoresQuePresentaron.setEnabled(false);
+    }
 }
+

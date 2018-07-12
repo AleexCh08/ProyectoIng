@@ -1,14 +1,17 @@
 package Vista;
 
-public class IAcceso extends javax.swing.JFrame {
+import Controlador.Ctrl_Trabajos;
 
-    public IAcceso() {
+public class IAcceso extends javax.swing.JFrame {
+    private Ctrl_Trabajos ctrl_trabajos;
+    public IAcceso(Ctrl_Trabajos ctrl_trabajos) {
         initComponents();
         this.setLocationRelativeTo(null); 
         this.setResizable(false);
         this.setTitle("IAcceso");
+        this.ctrl_trabajos = ctrl_trabajos;
     }
-
+    public static boolean X = true;
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -28,8 +31,18 @@ public class IAcceso extends javax.swing.JFrame {
         acceso.setText("Acceso:");
 
         comision.setText("Comisión de Investigación");
+        comision.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comisionActionPerformed(evt);
+            }
+        });
 
         persInteresada.setText("Persona Interesada");
+        persInteresada.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                persInteresadaActionPerformed(evt);
+            }
+        });
 
         salir.setText("Salir");
         salir.addActionListener(new java.awt.event.ActionListener() {
@@ -76,40 +89,15 @@ public class IAcceso extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_salirActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(IAcceso.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(IAcceso.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(IAcceso.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(IAcceso.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
+    private void comisionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comisionActionPerformed
+        X = true;
+        ctrl_trabajos.comisionInvestigacion();
+    }//GEN-LAST:event_comisionActionPerformed
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new IAcceso().setVisible(true);
-            }
-        });
-    }
+    private void persInteresadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_persInteresadaActionPerformed
+        X = false;
+        ctrl_trabajos.consulta();
+    }//GEN-LAST:event_persInteresadaActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel acceso;

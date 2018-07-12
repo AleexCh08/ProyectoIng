@@ -1,12 +1,15 @@
 package Vista;
 
-public class IReportesCentro extends javax.swing.JFrame {
+import Controlador.Ctrl_Trabajos;
 
-    public IReportesCentro() {
+public class IReportesCentro extends javax.swing.JFrame {
+    private Ctrl_Trabajos ctrl_trabajos;
+    public IReportesCentro(Ctrl_Trabajos ctrl_trabajos) {
         initComponents();
         this.setLocationRelativeTo(null); 
         this.setResizable(false);
         this.setTitle("IReportesCentro");
+        this.ctrl_trabajos = ctrl_trabajos;
     }
 
     /**
@@ -22,11 +25,11 @@ public class IReportesCentro extends javax.swing.JFrame {
         fechaFinal = new javax.swing.JLabel();
         textoFechaI = new javax.swing.JTextField();
         textoFechaF = new javax.swing.JTextField();
-        reporte = new javax.swing.JButton();
+        btnReporte = new javax.swing.JButton();
         trabajos = new javax.swing.JLabel();
         listaTrabajos = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
-        volver = new javax.swing.JButton();
+        btnVolver = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -38,7 +41,7 @@ public class IReportesCentro extends javax.swing.JFrame {
 
         textoFechaF.setText("DD/MM/AAAA");
 
-        reporte.setText("Reporte");
+        btnReporte.setText("Reporte");
 
         trabajos.setText("Trabajos:");
 
@@ -46,7 +49,12 @@ public class IReportesCentro extends javax.swing.JFrame {
         jTextArea1.setRows(5);
         listaTrabajos.setViewportView(jTextArea1);
 
-        volver.setText("Volver");
+        btnVolver.setText("Volver");
+        btnVolver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVolverActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -54,7 +62,7 @@ public class IReportesCentro extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(volver)
+                    .addComponent(btnVolver)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addGroup(layout.createSequentialGroup()
                             .addContainerGap()
@@ -71,7 +79,7 @@ public class IReportesCentro extends javax.swing.JFrame {
                                 .addComponent(textoFechaI, javax.swing.GroupLayout.DEFAULT_SIZE, 92, Short.MAX_VALUE)
                                 .addComponent(textoFechaF))
                             .addGap(18, 18, 18)
-                            .addComponent(reporte))))
+                            .addComponent(btnReporte))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -89,64 +97,33 @@ public class IReportesCentro extends javax.swing.JFrame {
                             .addComponent(textoFechaF, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(55, 55, 55)
-                        .addComponent(reporte, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnReporte, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addComponent(trabajos)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(listaTrabajos, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(volver)
+                .addComponent(btnVolver)
                 .addContainerGap(14, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(IReportesCentro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(IReportesCentro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(IReportesCentro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(IReportesCentro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new IReportesCentro().setVisible(true);
-            }
-        });
-    }
+    private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
+         ctrl_trabajos.comisionInvestigacion();
+    }//GEN-LAST:event_btnVolverActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnReporte;
+    private javax.swing.JButton btnVolver;
     private javax.swing.JLabel fechaFinal;
     private javax.swing.JLabel fechaInicio;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JScrollPane listaTrabajos;
-    private javax.swing.JButton reporte;
     private javax.swing.JTextField textoFechaF;
     private javax.swing.JTextField textoFechaI;
     private javax.swing.JLabel trabajos;
-    private javax.swing.JButton volver;
     // End of variables declaration//GEN-END:variables
 
     public void ocultar() {

@@ -1,12 +1,19 @@
 package Vista;
 
-public class ICargar extends javax.swing.JFrame {
+import Controlador.Ctrl_Trabajos;
+import javax.swing.JTextField;
 
-    public ICargar() {
+public class ICargar extends javax.swing.JFrame {
+    private Ctrl_Trabajos ctrl_trabajos;
+    public ICargar(Ctrl_Trabajos ctrl_trabajos) {
         initComponents();
         this.setLocationRelativeTo(null); 
         this.setResizable(false);
         this.setTitle("ICargar");
+        this.ctrl_trabajos = ctrl_trabajos;
+        txtMensajeCargar.setText("Carga Exitosa !");
+        txtMensajeCargar.setEditable(false);
+        txtMensajeCargar.setHorizontalAlignment(JTextField.CENTER);
     }
 
     /**
@@ -19,18 +26,23 @@ public class ICargar extends javax.swing.JFrame {
     private void initComponents() {
 
         mensaje = new javax.swing.JLabel();
-        aceptar = new javax.swing.JButton();
-        mensajeCargar = new javax.swing.JTextField();
+        btnAceptar = new javax.swing.JButton();
+        txtMensajeCargar = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         mensaje.setText("Mensaje: ");
 
-        aceptar.setText("Aceptar");
-
-        mensajeCargar.addActionListener(new java.awt.event.ActionListener() {
+        btnAceptar.setText("Aceptar");
+        btnAceptar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mensajeCargarActionPerformed(evt);
+                btnAceptarActionPerformed(evt);
+            }
+        });
+
+        txtMensajeCargar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtMensajeCargarActionPerformed(evt);
             }
         });
 
@@ -42,11 +54,11 @@ public class ICargar extends javax.swing.JFrame {
                 .addGap(32, 32, 32)
                 .addComponent(mensaje)
                 .addGap(4, 4, 4)
-                .addComponent(mensajeCargar, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtMensajeCargar, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(58, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(aceptar)
+                .addComponent(btnAceptar)
                 .addGap(32, 32, 32))
         );
         layout.setVerticalGroup(
@@ -55,58 +67,27 @@ public class ICargar extends javax.swing.JFrame {
                 .addGap(35, 35, 35)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(mensaje)
-                    .addComponent(mensajeCargar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtMensajeCargar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(aceptar)
+                .addComponent(btnAceptar)
                 .addContainerGap(20, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void mensajeCargarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mensajeCargarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_mensajeCargarActionPerformed
+    private void txtMensajeCargarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMensajeCargarActionPerformed
+        
+    }//GEN-LAST:event_txtMensajeCargarActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ICargar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ICargar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ICargar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ICargar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new ICargar().setVisible(true);
-            }
-        });
-    }
+    private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
+        ctrl_trabajos.comisionInvestigacion();
+    }//GEN-LAST:event_btnAceptarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton aceptar;
+    private javax.swing.JButton btnAceptar;
     private javax.swing.JLabel mensaje;
-    private javax.swing.JTextField mensajeCargar;
+    private javax.swing.JTextField txtMensajeCargar;
     // End of variables declaration//GEN-END:variables
 
     public void ocultar() {

@@ -1,12 +1,16 @@
 package Vista;
+import Controlador.Ctrl_Trabajos;
 
 public class IConsulta extends javax.swing.JFrame {
-
-    public IConsulta() {
+    private Ctrl_Trabajos ctrl_trabajos;
+    public IConsulta(Ctrl_Trabajos ctrl_trabajos) {
         initComponents();
         this.setLocationRelativeTo(null); 
         this.setResizable(false);
         this.setTitle("IConsulta");
+        this.ctrl_trabajos = ctrl_trabajos;
+        
+        seleccionProf.removeAllItems();
     }
 
     /**
@@ -20,12 +24,12 @@ public class IConsulta extends javax.swing.JFrame {
 
         grupo_tipo_trabajos = new javax.swing.ButtonGroup();
         seleccion = new javax.swing.JLabel();
-        seleccionProf = new javax.swing.JComboBox<>();
+        seleccionProf = new javax.swing.JComboBox<String>();
         dirigidos = new javax.swing.JRadioButton();
         presentados = new javax.swing.JRadioButton();
         trabajos = new javax.swing.JLabel();
-        consultar = new javax.swing.JButton();
-        volver = new javax.swing.JButton();
+        btnConsultar = new javax.swing.JButton();
+        btnVolver = new javax.swing.JButton();
         listaTrabajos = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
 
@@ -33,7 +37,7 @@ public class IConsulta extends javax.swing.JFrame {
 
         seleccion.setText("Seleccionar Profesor:");
 
-        seleccionProf.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        seleccionProf.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         seleccionProf.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 seleccionProfActionPerformed(evt);
@@ -48,14 +52,19 @@ public class IConsulta extends javax.swing.JFrame {
 
         trabajos.setText("Trabajos:");
 
-        consultar.setText("Consultar");
-        consultar.addActionListener(new java.awt.event.ActionListener() {
+        btnConsultar.setText("Consultar");
+        btnConsultar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                consultarActionPerformed(evt);
+                btnConsultarActionPerformed(evt);
             }
         });
 
-        volver.setText("Volver");
+        btnVolver.setText("Volver");
+        btnVolver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVolverActionPerformed(evt);
+            }
+        });
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
@@ -85,12 +94,12 @@ public class IConsulta extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(consultar)
+                        .addComponent(btnConsultar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(listaTrabajos, javax.swing.GroupLayout.DEFAULT_SIZE, 253, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(volver)))
+                        .addComponent(btnVolver)))
                 .addGap(26, 26, 26))
         );
         layout.setVerticalGroup(
@@ -109,14 +118,14 @@ public class IConsulta extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(53, 53, 53)
-                        .addComponent(consultar, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE))
+                        .addComponent(btnConsultar, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(105, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(listaTrabajos)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-                .addComponent(volver)
-                .addGap(22, 22, 22))
+                        .addGap(17, 17, 17)
+                        .addComponent(btnVolver)
+                        .addContainerGap())))
         );
 
         pack();
@@ -126,47 +135,21 @@ public class IConsulta extends javax.swing.JFrame {
         
     }//GEN-LAST:event_seleccionProfActionPerformed
 
-    private void consultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultarActionPerformed
+    private void btnConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_consultarActionPerformed
+    }//GEN-LAST:event_btnConsultarActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(IConsulta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(IConsulta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(IConsulta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(IConsulta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+    private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
+        if (IAcceso.X == true){
+            ctrl_trabajos.comisionInvestigacion();
+        }else{
+            ctrl_trabajos.principal();
         }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new IConsulta().setVisible(true);
-            }
-        });
-    }
+    }//GEN-LAST:event_btnVolverActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton consultar;
+    private javax.swing.JButton btnConsultar;
+    private javax.swing.JButton btnVolver;
     private javax.swing.JRadioButton dirigidos;
     private javax.swing.ButtonGroup grupo_tipo_trabajos;
     private javax.swing.JTextArea jTextArea1;
@@ -175,7 +158,6 @@ public class IConsulta extends javax.swing.JFrame {
     private javax.swing.JLabel seleccion;
     private javax.swing.JComboBox<String> seleccionProf;
     private javax.swing.JLabel trabajos;
-    private javax.swing.JButton volver;
     // End of variables declaration//GEN-END:variables
 
     public void ocultar() {
