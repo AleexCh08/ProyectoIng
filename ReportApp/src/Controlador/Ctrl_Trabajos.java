@@ -2,6 +2,7 @@ package Controlador;
 
 import Vista.*;
 import Modelo.*;
+import java.io.IOException;
 
 public class Ctrl_Trabajos {
     private static Ctrl_Trabajos uniqueInstance = null;
@@ -26,8 +27,7 @@ public class Ctrl_Trabajos {
         iReportesTrabProf = new IReportesTrabProf(this);
         conjuntoProfs = new ConjuntodeProfesores();
         conjuntoTrabj = new ConjuntodeTrabajos();
-        reporte = new Reporte();
-        
+        reporte = new Reporte();      
     }
      
     public static Ctrl_Trabajos getInstance(){
@@ -81,4 +81,8 @@ public class Ctrl_Trabajos {
         ocultarTodo();
         iReportesTrabProf.setVisible(true);
     } 
+    
+    public void cargarProfesores() throws IOException{
+        conjuntoProfs.cargarProfesor();
+    }
 }

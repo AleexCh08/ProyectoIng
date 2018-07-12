@@ -1,6 +1,9 @@
 package Vista;
 
 import Controlador.Ctrl_Trabajos;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class IPrincipalCom extends javax.swing.JFrame {
     private Ctrl_Trabajos ctrl_trabajos;
@@ -154,6 +157,11 @@ public class IPrincipalCom extends javax.swing.JFrame {
 
     private void btnCargarProfesoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCargarProfesoresActionPerformed
          ctrl_trabajos.cargar();
+        try {
+            ctrl_trabajos.cargarProfesores();
+        } catch (IOException ex) {
+            Logger.getLogger(IPrincipalCom.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btnCargarProfesoresActionPerformed
 
     private void btnConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarActionPerformed
@@ -174,6 +182,7 @@ public class IPrincipalCom extends javax.swing.JFrame {
     public void ocultar() {
         this.setVisible(false);
     }
+    
     public void deshabilitar() {
       btnCargarTrabajos.setEnabled(false);
       btnCargarProfesores.setEnabled(false);

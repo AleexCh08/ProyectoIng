@@ -5,6 +5,6 @@ public class CTRL_ACCESO {
     
     public static void main(String[] args){
         ctrl_trabajos = Ctrl_Trabajos.getInstance();
-        ctrl_trabajos.principal();    
+        ctrl_trabajos.principal();  
     }
 }
