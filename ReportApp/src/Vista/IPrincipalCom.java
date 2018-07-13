@@ -141,6 +141,11 @@ public class IPrincipalCom extends javax.swing.JFrame {
 
     private void btnCargarTrabajosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCargarTrabajosActionPerformed
         ctrl_trabajos.cargar();
+        try{
+            ctrl_trabajos.cargarTrabajos();
+        }catch (IOException ex){
+            Logger.getLogger(IPrincipalCom.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btnCargarTrabajosActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
@@ -182,13 +187,13 @@ public class IPrincipalCom extends javax.swing.JFrame {
     public void ocultar() {
         this.setVisible(false);
     }
-    
-    public void deshabilitar() {
+        
+    /*public void deshabilitar() {
       btnCargarTrabajos.setEnabled(false);
       btnCargarProfesores.setEnabled(false);
       btnTrabajosPorProfesor.setEnabled(false);
       btnTrabajosPorCentro.setEnabled(false);
       btnProfesoresQuePresentaron.setEnabled(false);
-    }
+    }*/
 }
 

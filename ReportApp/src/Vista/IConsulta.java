@@ -1,5 +1,6 @@
 package Vista;
 import Controlador.Ctrl_Trabajos;
+import java.util.List;
 
 public class IConsulta extends javax.swing.JFrame {
     private Ctrl_Trabajos ctrl_trabajos;
@@ -8,8 +9,7 @@ public class IConsulta extends javax.swing.JFrame {
         this.setLocationRelativeTo(null); 
         this.setResizable(false);
         this.setTitle("IConsulta");
-        this.ctrl_trabajos = ctrl_trabajos;
-        
+        this.ctrl_trabajos = ctrl_trabajos;       
         seleccionProf.removeAllItems();
     }
 
@@ -24,7 +24,7 @@ public class IConsulta extends javax.swing.JFrame {
 
         grupo_tipo_trabajos = new javax.swing.ButtonGroup();
         seleccion = new javax.swing.JLabel();
-        seleccionProf = new javax.swing.JComboBox<String>();
+        seleccionProf = new javax.swing.JComboBox<>();
         dirigidos = new javax.swing.JRadioButton();
         presentados = new javax.swing.JRadioButton();
         trabajos = new javax.swing.JLabel();
@@ -37,7 +37,7 @@ public class IConsulta extends javax.swing.JFrame {
 
         seleccion.setText("Seleccionar Profesor:");
 
-        seleccionProf.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        seleccionProf.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         seleccionProf.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 seleccionProfActionPerformed(evt);
@@ -45,6 +45,7 @@ public class IConsulta extends javax.swing.JFrame {
         });
 
         grupo_tipo_trabajos.add(dirigidos);
+        dirigidos.setSelected(true);
         dirigidos.setText("Dirigidos");
 
         grupo_tipo_trabajos.add(presentados);
@@ -136,7 +137,7 @@ public class IConsulta extends javax.swing.JFrame {
     }//GEN-LAST:event_seleccionProfActionPerformed
 
     private void btnConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_btnConsultarActionPerformed
 
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
@@ -159,7 +160,7 @@ public class IConsulta extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> seleccionProf;
     private javax.swing.JLabel trabajos;
     // End of variables declaration//GEN-END:variables
-
+    
     public void ocultar() {
         this.setVisible(false);
     }

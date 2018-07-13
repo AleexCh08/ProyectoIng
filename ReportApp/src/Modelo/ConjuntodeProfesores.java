@@ -7,10 +7,10 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class ConjuntodeProfesores {
-    private List<Profesor> profesor = new ArrayList();
+    private List<Profesor> profesor;
     
     public ConjuntodeProfesores(){
-        
+        profesor = new ArrayList<>();
     }
     
     public void agregarProfesor(String cedula, String apellido, String nombre, String centro){        
@@ -40,12 +40,12 @@ public class ConjuntodeProfesores {
                     auxApellido = aux[1];
                     auxNombre = aux[2];
                     auxCentro = aux[3];
-                    agregarProfesor(auxCedula, auxApellido, auxNombre, auxCentro);                   
+                    agregarProfesor(auxCedula, auxApellido, auxNombre, auxCentro);                  
                 }
             }
             profsBR.close();
         } catch (FileNotFoundException ex){
             Logger.getLogger(ConjuntodeProfesores.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }
+    }  
 }

@@ -11,5 +11,21 @@ public class Profesor {
         this.apellido = apellido;
         this.cedula = cedula;
         this.centro = centro;
-    }    
+    } 
+    
+    public String getNombre(){
+        return nombre;
+    }
+    
+    public String getApellido(){
+        return apellido;
+    }
+    
+    public String getCedula(){
+        return cedula;
+    }
+    
+    public String getCentro(){
+        return centro;
+    }       
 }

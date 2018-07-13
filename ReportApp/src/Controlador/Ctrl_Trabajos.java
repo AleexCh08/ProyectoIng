@@ -27,7 +27,7 @@ public class Ctrl_Trabajos {
         iReportesTrabProf = new IReportesTrabProf(this);
         conjuntoProfs = new ConjuntodeProfesores();
         conjuntoTrabj = new ConjuntodeTrabajos();
-        reporte = new Reporte();      
+        reporte = new Reporte();
     }
      
     public static Ctrl_Trabajos getInstance(){
@@ -85,4 +85,8 @@ public class Ctrl_Trabajos {
     public void cargarProfesores() throws IOException{
         conjuntoProfs.cargarProfesor();
     }
+    public void cargarTrabajos() throws IOException{
+        conjuntoTrabj.cargarTrabajo();
+    }
+    
 }

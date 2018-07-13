@@ -21,6 +21,7 @@ private Ctrl_Trabajos ctrl_trabajos;
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        grupoOrden = new javax.swing.ButtonGroup();
         seleccionar = new javax.swing.JLabel();
         orden1 = new javax.swing.JRadioButton();
         orden2 = new javax.swing.JRadioButton();
@@ -38,8 +39,11 @@ private Ctrl_Trabajos ctrl_trabajos;
 
         seleccionar.setText("Seleccionar Orden:");
 
+        grupoOrden.add(orden1);
+        orden1.setSelected(true);
         orden1.setText("Orden 1");
 
+        grupoOrden.add(orden2);
         orden2.setText("Orden 2");
 
         fechaI.setText("Fecha Inicio:");
@@ -107,9 +111,9 @@ private Ctrl_Trabajos ctrl_trabajos;
                 .addGap(31, 31, 31)
                 .addComponent(seleccionar)
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(orden1)
-                    .addComponent(orden2))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(orden1, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(orden2, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(18, 18, 18)
@@ -148,6 +152,7 @@ private Ctrl_Trabajos ctrl_trabajos;
     private javax.swing.JButton btnVolver;
     private javax.swing.JLabel fechaF;
     private javax.swing.JLabel fechaI;
+    private javax.swing.ButtonGroup grupoOrden;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JScrollPane listaTrabajos;
     private javax.swing.JRadioButton orden1;
