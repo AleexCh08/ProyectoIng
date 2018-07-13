@@ -10,7 +10,9 @@ public class IConsulta extends javax.swing.JFrame {
         this.setResizable(false);
         this.setTitle("IConsulta");
         this.ctrl_trabajos = ctrl_trabajos;       
-        seleccionProf.removeAllItems();        
+        seleccionProf.removeAllItems();
+        jTextArea1.setEnabled(false);
+        jTextArea1.setLineWrap(true);       
     }
 
     /**
@@ -133,11 +135,12 @@ public class IConsulta extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void seleccionProfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_seleccionProfActionPerformed
-
+        
     }//GEN-LAST:event_seleccionProfActionPerformed
 
     private void btnConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarActionPerformed
-        
+        borrarTexto();
+        seleccionado();
     }//GEN-LAST:event_btnConsultarActionPerformed
 
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
@@ -165,6 +168,36 @@ public class IConsulta extends javax.swing.JFrame {
         for(int i = 0; i < p.length; i++) {
             seleccionProf.addItem(p[i]);
         }     
+    }
+    
+    public void borrarTexto(){
+        jTextArea1.setText(" ");
+    }
+    
+    public void seleccionado(){
+        int p = seleccionProf.getSelectedIndex();
+        boolean selected;
+        if(dirigidos.isSelected()){ 
+            selected = true;
+            ctrl_trabajos.buscarTrabajos(p, selected);
+        }
+        if(presentados.isSelected()){
+            selected = false;
+            ctrl_trabajos.buscarTrabajos(p, selected);
+        }
+    }
+    
+    public void mostrar(String trabajo){
+        jTextArea1.append(trabajo + ".");
+        jTextArea1.append(System.getProperty("line.separator"));
+    }
+    
+    public void mensajeError(){
+        if(dirigidos.isSelected()){
+            jTextArea1.setText("Profesor sin trabajos dirigidos");
+        }else{
+            jTextArea1.setText("Profesor sin trabajos presentados");
+        }
     }
     
     public void ocultar() {

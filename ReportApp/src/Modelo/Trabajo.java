@@ -36,4 +36,68 @@ public class Trabajo {
         this.apellido_t2 = apellido_t2;
         this.nombre_t2 = nombre_t2;
     }
+    
+    public String getNivel(){
+        return nivel;
+    }
+    
+    public String getTitulo(){
+        return titulo;
+    }
+    
+    public String getCi(){
+        return ci;
+    }
+    
+    public String getApellido1(){
+        return apellido1;
+    }
+    
+    public String getNombre1(){
+        return nombre1;
+    }
+    
+    public String getCi_2(){
+        return ci_2;
+    }
+    
+    public String getApellido2(){
+        return apellido2;
+    }
+    
+    public String getNombre2(){
+        return nombre2;
+    }
+    
+    public String getSem1erainsc(){
+        return sem1erainsc;
+    }
+    
+    public String getFechaDefensa(){
+        return fechaDefensa;
+    }
+    
+    public String getCi_t(){
+        return ci_t;
+    }
+    
+    public String getApellido_t1(){
+        return apellido_t1;
+    }
+    
+    public String getNombre_t1(){
+        return nombre_t1;
+    }
+    
+    public String getCi_t2(){
+        return ci_t2;
+    }
+    
+    public String getApellido_t2(){
+        return apellido_t2;
+    }
+    
+    public String getNombre_t2(){
+        return nombre_t2;
+    }       
 }

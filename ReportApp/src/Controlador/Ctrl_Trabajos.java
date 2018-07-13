@@ -64,6 +64,7 @@ public class Ctrl_Trabajos {
 
     public void consulta() {
         ocultarTodo();
+        iConsulta.borrarTexto();
         iConsulta.setVisible(true);
     }
     
@@ -100,12 +101,48 @@ public class Ctrl_Trabajos {
         for (int i = 0; i < size; i++) {
             p[i] = conjuntoProfs.getProfesor().get(i).getNombre();
             p[i] = p[i] + " " + conjuntoProfs.getProfesor().get(i).getApellido();
-            System.out.println(p[i]);
         }       
         iConsulta.montarP(p);
     }
     
-    
+    public void buscarTrabajos(int indice, boolean selected){       
+        String cedula = "";
+        int size = 0;
+        String aux = "";
+        String aux1 = "";
+        boolean flag = false;
+        
+        if(selected){
+            cedula = conjuntoProfs.getProfesor().get(indice).getCedula();
+            size = conjuntoTrabj.getTrabajos().size();
+            for(int i = 0; i < size; i++) {            
+                aux = conjuntoTrabj.getTrabajos().get(i).getCi_t();
+                if(aux.equals(cedula)){  
+                    flag = true;
+                    aux1 = conjuntoTrabj.getTrabajos().get(i).getTitulo();
+                    iConsulta.mostrar(aux1);
+                }
+            }
+            if(flag == false){
+                iConsulta.mensajeError();
+            }    
+        }else{
+            cedula = conjuntoProfs.getProfesor().get(indice).getCedula();
+            size = conjuntoTrabj.getTrabajos().size();
+            for(int i = 0; i < size; i++) {
+                aux = conjuntoTrabj.getTrabajos().get(i).getCi();
+                if(aux.equals(cedula)){  
+                    flag = true;
+                    aux1 = conjuntoTrabj.getTrabajos().get(i).getTitulo();
+                    iConsulta.mostrar(aux1);
+                }
+            }
+            if(flag == false){
+                iConsulta.mensajeError();
+            }
+        }      
+    }
+       
     public boolean fechaVal(String a, String b) {
         String dateFormat = "dd/MM/uuuu";
         String dateStringa = a;
