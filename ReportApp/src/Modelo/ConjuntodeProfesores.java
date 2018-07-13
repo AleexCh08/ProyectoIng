@@ -13,6 +13,10 @@ public class ConjuntodeProfesores {
         profesor = new ArrayList<>();
     }
     
+    public List<Profesor> getProfesor(){
+        return profesor;
+    }
+    
     public void agregarProfesor(String cedula, String apellido, String nombre, String centro){        
         profesor.add(new Profesor(cedula, apellido, nombre, centro));
     }
@@ -47,5 +51,5 @@ public class ConjuntodeProfesores {
         } catch (FileNotFoundException ex){
             Logger.getLogger(ConjuntodeProfesores.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }  
+    }     
 }

@@ -167,6 +167,7 @@ public class IPrincipalCom extends javax.swing.JFrame {
         } catch (IOException ex) {
             Logger.getLogger(IPrincipalCom.class.getName()).log(Level.SEVERE, null, ex);
         }
+        ctrl_trabajos.montar();
     }//GEN-LAST:event_btnCargarProfesoresActionPerformed
 
     private void btnConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarActionPerformed

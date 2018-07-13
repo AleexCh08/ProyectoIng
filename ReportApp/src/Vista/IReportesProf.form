@@ -116,6 +116,9 @@
         <Property name="selected" type="boolean" value="true"/>
         <Property name="text" type="java.lang.String" value="Orden 1"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="orden1ActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JRadioButton" name="orden2">
       <Properties>
@@ -124,6 +127,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Orden 2"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="orden2ActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="fechaI">
       <Properties>
@@ -137,7 +143,7 @@
     </Component>
     <Component class="javax.swing.JTextField" name="textoFechaI">
       <Properties>
-        <Property name="text" type="java.lang.String" value="DD/MM/AAAA"/>
+        <Property name="text" type="java.lang.String" value="DDMMAAAA"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="textoFechaIActionPerformed"/>
@@ -145,7 +151,7 @@
     </Component>
     <Component class="javax.swing.JTextField" name="textoFechaF">
       <Properties>
-        <Property name="text" type="java.lang.String" value="DD/MM/AAAA"/>
+        <Property name="text" type="java.lang.String" value="DDMMAAAA"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="btnReporte">

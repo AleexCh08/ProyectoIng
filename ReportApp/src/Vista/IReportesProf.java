@@ -11,7 +11,6 @@ private Ctrl_Trabajos ctrl_trabajos;
         this.setTitle("IReportesProf");
         this.ctrl_trabajos = ctrl_trabajos;
     }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -42,22 +41,32 @@ private Ctrl_Trabajos ctrl_trabajos;
         grupoOrden.add(orden1);
         orden1.setSelected(true);
         orden1.setText("Orden 1");
+        orden1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                orden1ActionPerformed(evt);
+            }
+        });
 
         grupoOrden.add(orden2);
         orden2.setText("Orden 2");
+        orden2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                orden2ActionPerformed(evt);
+            }
+        });
 
         fechaI.setText("Fecha Inicio:");
 
         fechaF.setText("Fecha Final:");
 
-        textoFechaI.setText("DD/MM/AAAA");
+        textoFechaI.setText("DDMMAAAA");
         textoFechaI.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 textoFechaIActionPerformed(evt);
             }
         });
 
-        textoFechaF.setText("DD/MM/AAAA");
+        textoFechaF.setText("DDMMAAAA");
 
         btnReporte.setText("Reporte");
 
@@ -146,6 +155,16 @@ private Ctrl_Trabajos ctrl_trabajos;
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
         ctrl_trabajos.comisionInvestigacion();
     }//GEN-LAST:event_btnVolverActionPerformed
+
+    private void orden1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_orden1ActionPerformed
+        // TODO add your handling code here:
+        ctrl_trabajos.ord = true;
+    }//GEN-LAST:event_orden1ActionPerformed
+
+    private void orden2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_orden2ActionPerformed
+        // TODO add your handling code here:
+        ctrl_trabajos.ord = false;
+    }//GEN-LAST:event_orden2ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnReporte;

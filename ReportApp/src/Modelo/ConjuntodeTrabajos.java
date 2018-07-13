@@ -13,6 +13,10 @@ public class ConjuntodeTrabajos {
         trabajo = new ArrayList<>();
     }
     
+    public List<Trabajo> getTrabajos(){
+        return trabajo;
+    }
+    
     public void agregarTrabajo(String nivel, String titulo, String ci, String apellido1, String nombre1, String ci_2, String apellido2, String nombre2, String sem1erainsc, String fechaDefensa, String ci_t, String apellido_t1, String nombre_t1, String ci_t2, String apellido_t2, String nombre_t2 ){      
        trabajo.add(new Trabajo(nivel, titulo, ci, apellido1, nombre1, ci_2, apellido2, nombre2, sem1erainsc, fechaDefensa, ci_t, apellido_t1, nombre_t1, ci_t2, apellido_t2, nombre_t2 ));
     }

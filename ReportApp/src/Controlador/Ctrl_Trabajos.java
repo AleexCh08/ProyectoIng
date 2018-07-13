@@ -3,6 +3,10 @@ package Controlador;
 import Vista.*;
 import Modelo.*;
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+import java.time.format.ResolverStyle;
 
 public class Ctrl_Trabajos {
     private static Ctrl_Trabajos uniqueInstance = null;
@@ -16,6 +20,7 @@ public class Ctrl_Trabajos {
     private ConjuntodeProfesores conjuntoProfs;
     private ConjuntodeTrabajos conjuntoTrabj;
     private Reporte reporte;
+    public boolean ord;
     
     private Ctrl_Trabajos(){
         iAcceso = new IAcceso(this);
@@ -89,4 +94,57 @@ public class Ctrl_Trabajos {
         conjuntoTrabj.cargarTrabajo();
     }
     
+    public void montar(){        
+        int size = conjuntoProfs.getProfesor().size();
+        String[] p = new String[size];
+        for (int i = 0; i < size; i++) {
+            p[i] = conjuntoProfs.getProfesor().get(i).getNombre();
+            p[i] = p[i] + " " + conjuntoProfs.getProfesor().get(i).getApellido();
+            System.out.println(p[i]);
+        }       
+        iConsulta.montarP(p);
+    }
+    
+    
+    public boolean fechaVal(String a, String b) {
+        String dateFormat = "dd/MM/uuuu";
+        String dateStringa = a;
+        String dateStringb = b;
+        boolean n;
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter
+            .ofPattern(dateFormat)
+            .withResolverStyle(ResolverStyle.STRICT);
+        try {
+            LocalDate datea = LocalDate.parse(dateStringa, dateTimeFormatter);
+        } catch (DateTimeParseException e) {
+            // Retornar False
+            return n=false;
+        }
+        LocalDate datea = LocalDate.parse(dateStringa, dateTimeFormatter);
+        try {
+            LocalDate dateb = LocalDate.parse(dateStringb, dateTimeFormatter);
+        } catch (DateTimeParseException e) {
+            // Retornar False
+            return n=false;
+        }
+        LocalDate dateb = LocalDate.parse(dateStringb, dateTimeFormatter);
+        if ((datea.isAfter(dateb)) || (datea.isBefore(LocalDate.parse("2014-01-01"))) ||
+                (dateb.isAfter(LocalDate.parse("2018-12-31")))) {
+            return n=false;
+        }
+    return n=true;
+    }
+    
+    public boolean fechaDentro(LocalDate a, LocalDate b, LocalDate c){
+        boolean n;
+        if (c.isAfter(a) && c.isBefore(b)) {
+            return n=true;
+    }else{
+            return n=false;
+        }
+    }
+    
+    public void reportarTrabajosporProf(){
+        
+    }
 }

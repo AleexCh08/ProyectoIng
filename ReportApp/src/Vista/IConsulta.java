@@ -10,7 +10,7 @@ public class IConsulta extends javax.swing.JFrame {
         this.setResizable(false);
         this.setTitle("IConsulta");
         this.ctrl_trabajos = ctrl_trabajos;       
-        seleccionProf.removeAllItems();
+        seleccionProf.removeAllItems();        
     }
 
     /**
@@ -133,7 +133,7 @@ public class IConsulta extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void seleccionProfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_seleccionProfActionPerformed
-        
+
     }//GEN-LAST:event_seleccionProfActionPerformed
 
     private void btnConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarActionPerformed
@@ -160,6 +160,12 @@ public class IConsulta extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> seleccionProf;
     private javax.swing.JLabel trabajos;
     // End of variables declaration//GEN-END:variables
+    
+    public void montarP(String[] p){
+        for(int i = 0; i < p.length; i++) {
+            seleccionProf.addItem(p[i]);
+        }     
+    }
     
     public void ocultar() {
         this.setVisible(false);
