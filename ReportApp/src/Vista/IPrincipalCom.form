@@ -130,7 +130,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnTrabajosPorProfesor">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Reportar Trabajos por Porfesor"/>
+        <Property name="text" type="java.lang.String" value="Reportar Trabajos por Profesor"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnTrabajosPorProfesorActionPerformed"/>

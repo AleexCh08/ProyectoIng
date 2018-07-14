@@ -21,6 +21,10 @@ public class Ctrl_Trabajos {
     private ConjuntodeTrabajos conjuntoTrabj;
     private Reporte reporte;
     public boolean ord;
+    public boolean prof = false;
+    public boolean trab = false;
+    public boolean band = false;
+    public boolean carga;
     
     private Ctrl_Trabajos(){
         iAcceso = new IAcceso(this);
@@ -30,9 +34,9 @@ public class Ctrl_Trabajos {
         iReportesCentro = new IReportesCentro(this);
         iReportesProf = new IReportesProf(this);
         iReportesTrabProf = new IReportesTrabProf(this);
-        conjuntoProfs = new ConjuntodeProfesores();
-        conjuntoTrabj = new ConjuntodeTrabajos();
-        reporte = new Reporte();
+        conjuntoProfs = new ConjuntodeProfesores(this);
+        conjuntoTrabj = new ConjuntodeTrabajos(this);
+        reporte = new Reporte(this,conjuntoProfs,conjuntoTrabj);
     }
      
     public static Ctrl_Trabajos getInstance(){
@@ -54,12 +58,24 @@ public class Ctrl_Trabajos {
 
     public void principal() {
         ocultarTodo();
-        iAcceso.setVisible(true);
+        if (trab && prof){
+            iAcceso.habilitar();
+            iAcceso.setVisible(true);
+        }else{
+            iAcceso.deshabilitar();
+            iAcceso.setVisible(true);
+        }
     }
     
     public void comisionInvestigacion() {
         ocultarTodo();
+        if (trab && prof){
+        iPrincipalCom.habilitar();
         iPrincipalCom.setVisible(true);
+        }else{
+            iPrincipalCom.deshabilitar();
+            iPrincipalCom.setVisible(true);
+        }
     }
 
     public void consulta() {
@@ -80,19 +96,31 @@ public class Ctrl_Trabajos {
     
     public void reportesProf() {
         ocultarTodo();
+        iReportesProf.borrarTexto();
         iReportesProf.setVisible(true);
     }
     
     public void reportesTrabProf() {
         ocultarTodo();
+        iReportesTrabProf.borrarTexto();
         iReportesTrabProf.setVisible(true);
     } 
     
     public void cargarProfesores() throws IOException{
         conjuntoProfs.cargarProfesor();
+        if(conjuntoProfs.getProfesor().size()>0){
+         iCargar.exito();
+        } else {
+            iCargar.noExito();
+        }
     }
     public void cargarTrabajos() throws IOException{
         conjuntoTrabj.cargarTrabajo();
+        if(conjuntoTrabj.getTrabajos().size()>0){
+            iCargar.exito();
+        }else {
+            iCargar.noExito();
+        }
     }
     
     public void montar(){        
@@ -176,7 +204,7 @@ public class Ctrl_Trabajos {
         boolean n;
         if (c.isAfter(a) && c.isBefore(b)) {
             return n=true;
-    }else{
+        }else{
             return n=false;
         }
     }
@@ -184,4 +212,101 @@ public class Ctrl_Trabajos {
     public void reportarTrabajosporProf(){
         
     }
-}
+    
+    public void MostrarProfs(String s1, String s2, String s3, String s4){
+        iReportesTrabProf.mostrar(s1);
+        iReportesTrabProf.mostrar(s2);
+        iReportesTrabProf.mostrar(s3);
+        iReportesTrabProf.mostrar(s4);
+        iReportesTrabProf.mostrar("\n");      
+    }
+    
+    public void reportarProfPresentaron(){
+        iReportesTrabProf.borrarTexto(); 
+        String dateFormat = "dd/MM/uuuu";
+        String a,b;
+        LocalDate x = LocalDate.parse("2014-01-01");
+        LocalDate y = LocalDate.parse("2018-12-31");
+        a=iReportesTrabProf.getFechaInicial();
+        b=iReportesTrabProf.getFechaFinal();
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter
+            .ofPattern(dateFormat)
+            .withResolverStyle(ResolverStyle.STRICT);
+         if (!(fechaVal(a,b))){
+        
+         }else{
+             x = LocalDate.parse(a,dateTimeFormatter);
+             y = LocalDate.parse(b,dateTimeFormatter);
+         }
+        int h= conjuntoTrabj.getTrabajos().size(); //numero de elementos en la lista
+        String fecha;
+        String level;
+        String cedula;
+            for(int i=0; i<h;i++){          
+                level=conjuntoTrabj.getTrabajos().get(i).getNivel();
+                fecha=conjuntoTrabj.getTrabajos().get(i).getFechaDefensa();
+                LocalDate z = LocalDate.parse(fecha,dateTimeFormatter);
+                if(("TGM".equals(level) || "TDR".equals(level)) && fechaDentro(x,y,z) ){ // si Nivel es TGM o Nivel es TDR
+                     cedula=conjuntoTrabj.getTrabajos().get(i).getCi();
+                    reporte.esProfesor(cedula);
+                }
+            }
+    }
+    
+    public void reportarProf(){
+        iReportesProf.borrarTexto();      
+        String dateFormat = "dd/MM/uuuu";
+        String a,b;
+        LocalDate x = LocalDate.parse("2014-01-01");
+        LocalDate y = LocalDate.parse("2018-12-31");
+        a=iReportesProf.getFechaInicial();
+        b=iReportesProf.getFechaFinal();
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter
+            .ofPattern(dateFormat)
+            .withResolverStyle(ResolverStyle.STRICT);
+         if (!(fechaVal(a,b))){
+        
+         }else{
+             x = LocalDate.parse(a,dateTimeFormatter);
+             y = LocalDate.parse(b,dateTimeFormatter);
+         }
+        int h= conjuntoProfs.getProfesor().size(); //numero de elementos en la lista
+        int j= conjuntoTrabj.getTrabajos().size();
+        String fecha;
+        String tutor;
+        String ntutor;
+        String apetutor;
+        String tutorx;
+        String tutory;
+        String completo="";
+        int canti=0;
+            for(int i=0; i<h;i++){
+                tutor=conjuntoProfs.getProfesor().get(i).getCedula();
+                ntutor=conjuntoProfs.getProfesor().get(i).getNombre();
+                apetutor=conjuntoProfs.getProfesor().get(i).getApellido();
+                for(int s=0; s<j;s++){
+                    fecha=conjuntoTrabj.getTrabajos().get(s).getFechaDefensa();
+                    tutorx=conjuntoTrabj.getTrabajos().get(s).getCi_t();
+                    tutory=conjuntoTrabj.getTrabajos().get(s).getCi_t2();
+                    LocalDate z = LocalDate.parse(fecha,dateTimeFormatter);
+                    if (fechaDentro(x,y,z)){
+                        if (tutor.equals(tutorx) || tutor.equals(tutory)){
+                            canti++;
+                        }
+                    }
+                }
+                if (canti>0){
+                    
+                    iReportesProf.mostrar(ntutor);
+                    iReportesProf.mostrar(" ");
+                    iReportesProf.mostrar(apetutor);
+                    iReportesProf.mostrar(" ");
+                    iReportesProf.mostrar(tutor);
+                    iReportesProf.mostrar(" ");
+                    iReportesProf.mostrar(Integer.toString(canti));
+                    iReportesProf.mostrar("\n");
+                    canti = 0;                    
+                }
+            }
+    }      
+ }

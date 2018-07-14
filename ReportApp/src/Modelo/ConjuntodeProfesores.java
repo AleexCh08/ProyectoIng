@@ -1,5 +1,6 @@
 package Modelo;
 
+import Controlador.Ctrl_Trabajos;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -8,9 +9,11 @@ import java.util.logging.Logger;
 
 public class ConjuntodeProfesores {
     private List<Profesor> profesor;
+    private Ctrl_Trabajos ctrl_trabajos;
     
-    public ConjuntodeProfesores(){
+    public ConjuntodeProfesores(Ctrl_Trabajos ctrl_trabajos){
         profesor = new ArrayList<>();
+        this.ctrl_trabajos = ctrl_trabajos;
     }
     
     public List<Profesor> getProfesor(){
@@ -31,6 +34,7 @@ public class ConjuntodeProfesores {
 
         File profs = new File("src/Data/profs_Centros.txt");
         
+         
         try {
             FileReader profsFR = new FileReader(profs);
             BufferedReader profsBR = new BufferedReader(profsFR);
@@ -40,14 +44,21 @@ public class ConjuntodeProfesores {
                 }else{
                     auxProfs = auxProfs.replace(";", "");
                     aux = auxProfs.split("#");
+                    if (aux.length<4){
+                        System.out.println("Archivo con campos incorrectos");
+                        profesor.removeAll(profesor);
+                        break;
+                    }else{
                     auxCedula = aux[0];
                     auxApellido = aux[1];
                     auxNombre = aux[2];
                     auxCentro = aux[3];
-                    agregarProfesor(auxCedula, auxApellido, auxNombre, auxCentro);                  
+                    agregarProfesor(auxCedula, auxApellido, auxNombre, auxCentro); 
+                    }                 
                 }
             }
             profsBR.close();
+            ctrl_trabajos.prof=true;
         } catch (FileNotFoundException ex){
             Logger.getLogger(ConjuntodeProfesores.class.getName()).log(Level.SEVERE, null, ex);
         }

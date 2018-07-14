@@ -2,15 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/C:/Users/Franco/Desktop/ReportApp1205AM/src/Modelo/ConjuntodeTrabajos.java</file>
-            <file>file:/C:/Users/Franco/Desktop/ReportApp1205AM/src/Modelo/Trabajo.java</file>
-            <file>file:/C:/Users/Franco/Desktop/ReportApp1205AM/src/Modelo/Profesor.java</file>
-            <file>file:/C:/Users/Franco/Desktop/ReportApp1205AM/src/Controlador/Ctrl_Trabajos.java</file>
-            <file>file:/C:/Users/Franco/Desktop/ReportApp1205AM/src/Vista/IReportesCentro.java</file>
-            <file>file:/C:/Users/Franco/Desktop/ReportApp1205AM/src/Modelo/ConjuntodeProfesores.java</file>
-            <file>file:/C:/Users/Franco/Desktop/ReportApp1205AM/src/Vista/IReportesProf.java</file>
-            <file>file:/C:/Users/Franco/Desktop/ReportApp1205AM/src/Modelo/Reporte.java</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>

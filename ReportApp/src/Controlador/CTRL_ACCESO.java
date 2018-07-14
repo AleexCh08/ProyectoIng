@@ -8,3 +8,11 @@ public class CTRL_ACCESO {
         ctrl_trabajos.principal();  
     }
 }
+
+/*Proyecto de Ingeneria de Software II-2107 - ReportAPP
+Equipo #3
+Integrantes: Cabrera Kharleann - 25831122
+             Churio Alexander - 23708325
+             Jimenez Franco - 26552242
+             Gerig Edgar - 25858414
+*/

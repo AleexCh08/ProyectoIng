@@ -1,5 +1,6 @@
 package Modelo;
 
+import Controlador.Ctrl_Trabajos;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -8,9 +9,11 @@ import java.util.logging.Logger;
 
 public class ConjuntodeTrabajos {
     private List<Trabajo> trabajo;
+    private Ctrl_Trabajos ctrl_trabajos;
     
-    public ConjuntodeTrabajos(){
+    public ConjuntodeTrabajos(Ctrl_Trabajos ctrl_trabajos){
         trabajo = new ArrayList<>();
+        this.ctrl_trabajos = ctrl_trabajos;
     }
     
     public List<Trabajo> getTrabajos(){
@@ -52,7 +55,12 @@ public class ConjuntodeTrabajos {
 
                 }else{
                     aux = auxTrabajos.split("#");                     
-                    if(aux[0].equals("TEG")){                                        
+                    if(aux[0].equals("TEG")){  
+                        if (aux.length<16){
+                        System.out.println("Archivo con campos incorrectos");
+                        trabajo.removeAll(trabajo);
+                        break;
+                    }else{
                         auxnivel = aux[0];
                         auxtitulo = aux[1];
                         auxci = aux[2];
@@ -70,7 +78,14 @@ public class ConjuntodeTrabajos {
                         auxapellido_t2 = aux[14];
                         agr = aux[15].replace(";", "");
                         auxnombre_t2 = agr;
+                        
                         agregarTrabajo(auxnivel, auxtitulo, auxci, auxapellido1, auxnombre1, auxci_2, auxapellido2, auxnombre2, auxsem1erainsc, auxfechaDefensa, auxci_t, auxapellido_t1, auxnombre_t1, auxci_t2, auxapellido_t2, auxnombre_t2);
+                        }
+                       }else{
+                        if (aux.length<13){
+                        System.out.println("Archivo con campos incorrectos");
+                        trabajo.removeAll(trabajo);
+                        break;
                     }else{
                         auxnivel = aux[0];
                         auxtitulo = aux[1];
@@ -88,10 +103,12 @@ public class ConjuntodeTrabajos {
                         agr = aux[12].replace(";", "");
                         auxnombre_t2 = agr;
                         agregarTrabajo(auxnivel, auxtitulo, auxci, auxapellido1, auxnombre1, auxci_2, auxapellido2, auxnombre2, auxsem1erainsc, auxfechaDefensa, auxci_t, auxapellido_t1, auxnombre_t1, auxci_t2, auxapellido_t2, auxnombre_t2);
+                        }
                     }               
                 }
             }
             trabajosBR.close();
+            ctrl_trabajos.trab=true;
         } catch (FileNotFoundException ex){
             Logger.getLogger(ConjuntodeTrabajos.class.getName()).log(Level.SEVERE, null, ex);
         }

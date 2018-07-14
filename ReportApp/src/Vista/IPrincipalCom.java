@@ -79,7 +79,7 @@ public class IPrincipalCom extends javax.swing.JFrame {
             }
         });
 
-        btnTrabajosPorProfesor.setText("Reportar Trabajos por Porfesor");
+        btnTrabajosPorProfesor.setText("Reportar Trabajos por Profesor");
         btnTrabajosPorProfesor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnTrabajosPorProfesorActionPerformed(evt);
@@ -140,9 +140,10 @@ public class IPrincipalCom extends javax.swing.JFrame {
     }//GEN-LAST:event_btnTrabajosPorCentroActionPerformed
 
     private void btnCargarTrabajosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCargarTrabajosActionPerformed
-        ctrl_trabajos.cargar();
+        
         try{
             ctrl_trabajos.cargarTrabajos();
+            ctrl_trabajos.cargar();
         }catch (IOException ex){
             Logger.getLogger(IPrincipalCom.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -161,9 +162,10 @@ public class IPrincipalCom extends javax.swing.JFrame {
     }//GEN-LAST:event_btnProfesoresQuePresentaronActionPerformed
 
     private void btnCargarProfesoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCargarProfesoresActionPerformed
-         ctrl_trabajos.cargar();
+         
         try {
             ctrl_trabajos.cargarProfesores();
+            ctrl_trabajos.cargar();
         } catch (IOException ex) {
             Logger.getLogger(IPrincipalCom.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -189,12 +191,17 @@ public class IPrincipalCom extends javax.swing.JFrame {
         this.setVisible(false);
     }
         
-    /*public void deshabilitar() {
-      btnCargarTrabajos.setEnabled(false);
-      btnCargarProfesores.setEnabled(false);
+    public void deshabilitar() {
       btnTrabajosPorProfesor.setEnabled(false);
       btnTrabajosPorCentro.setEnabled(false);
       btnProfesoresQuePresentaron.setEnabled(false);
-    }*/
+      btnConsultar.setEnabled(false);
+    }
+    public void habilitar() {
+      btnTrabajosPorProfesor.setEnabled(true);
+      btnTrabajosPorCentro.setEnabled(true);
+      btnProfesoresQuePresentaron.setEnabled(true);
+      btnConsultar.setEnabled(true);
+    }
 }
 

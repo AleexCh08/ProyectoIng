@@ -93,4 +93,14 @@ public class ICargar extends javax.swing.JFrame {
     public void ocultar() {
         this.setVisible(false);
     }
+    public void exito(){
+        txtMensajeCargar.setText("Carga Exitosa !");
+        txtMensajeCargar.setEditable(false);
+        txtMensajeCargar.setHorizontalAlignment(JTextField.CENTER);
+    }
+    public void noExito(){
+        txtMensajeCargar.setText("Carga no exitosa ");
+        txtMensajeCargar.setEditable(false);
+        txtMensajeCargar.setHorizontalAlignment(JTextField.CENTER);
+    }
 }

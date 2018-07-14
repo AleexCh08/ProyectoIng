@@ -10,6 +10,7 @@ private Ctrl_Trabajos ctrl_trabajos;
         this.setResizable(false);
         this.setTitle("IReportesProf");
         this.ctrl_trabajos = ctrl_trabajos;
+        jTextArea1.setEnabled(false);
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -69,6 +70,11 @@ private Ctrl_Trabajos ctrl_trabajos;
         textoFechaF.setText("DDMMAAAA");
 
         btnReporte.setText("Reporte");
+        btnReporte.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnReporteActionPerformed(evt);
+            }
+        });
 
         trabajos.setText("Trabajos:");
 
@@ -166,6 +172,11 @@ private Ctrl_Trabajos ctrl_trabajos;
         ctrl_trabajos.ord = false;
     }//GEN-LAST:event_orden2ActionPerformed
 
+    private void btnReporteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReporteActionPerformed
+        // TODO add your handling code here:
+        ctrl_trabajos.reportarProf();
+    }//GEN-LAST:event_btnReporteActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnReporte;
     private javax.swing.JButton btnVolver;
@@ -184,5 +195,21 @@ private Ctrl_Trabajos ctrl_trabajos;
 
     public void ocultar() {
         this.setVisible(false);
+    }
+    public void borrarTexto(){
+        jTextArea1.setText(" ");
+    }
+    
+    public String getFechaInicial(){
+        return this.textoFechaI.getText();
+    }
+    
+    public String getFechaFinal(){
+        return this.textoFechaF.getText();
+    }
+    
+    public void mostrar(String muestra ){
+        jTextArea1.append(muestra);
+        jTextArea1.append(System.getProperty("lineSeparator"));     
     }
 }

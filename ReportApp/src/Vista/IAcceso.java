@@ -109,4 +109,11 @@ public class IAcceso extends javax.swing.JFrame {
     public void ocultar() {
         this.setVisible(false);
     }
+    
+    public void deshabilitar() {
+      persInteresada.setEnabled(false);
+    }
+    public void habilitar() {
+      persInteresada.setEnabled(true);
+    }
 }
