@@ -42,6 +42,11 @@ public class IReportesCentro extends javax.swing.JFrame {
         textoFechaF.setText("DD/MM/AAAA");
 
         btnReporte.setText("Reporte");
+        btnReporte.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnReporteActionPerformed(evt);
+            }
+        });
 
         trabajos.setText("Trabajos:");
 
@@ -114,6 +119,11 @@ public class IReportesCentro extends javax.swing.JFrame {
          ctrl_trabajos.comisionInvestigacion();
     }//GEN-LAST:event_btnVolverActionPerformed
 
+    private void btnReporteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReporteActionPerformed
+        // TODO add your handling code here:
+        ctrl_trabajos.reportarCentros();
+    }//GEN-LAST:event_btnReporteActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnReporte;
     private javax.swing.JButton btnVolver;
@@ -128,5 +138,20 @@ public class IReportesCentro extends javax.swing.JFrame {
 
     public void ocultar() {
         this.setVisible(false);
+    }
+    public void borrarTexto(){
+        jTextArea1.setText(" ");
+    }
+    
+    public String getFechaInicial(){
+        return this.textoFechaI.getText();
+    }
+     public String getFechaFinal(){
+        return this.textoFechaF.getText();
+    }
+    public void mostrar(String muestra ){
+       jTextArea1.append(muestra);
+       jTextArea1.append(System.getProperty("lineSeparator"));
+      
     }
 }

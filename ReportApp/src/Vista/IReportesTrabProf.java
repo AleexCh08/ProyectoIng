@@ -150,6 +150,10 @@ private Ctrl_Trabajos ctrl_trabajos;
         // TODO add your handling code here:
         
         ctrl_trabajos.reportarProfPresentaron();
+        if(ctrl_trabajos.band==false){ //BANDERA AQUI
+            mostrar("No hay profesores que presentaron trabajos \npara la fecha");
+        }
+        ctrl_trabajos.band=false;
     }//GEN-LAST:event_btnReporteActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

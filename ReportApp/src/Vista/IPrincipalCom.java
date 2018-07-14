@@ -202,6 +202,8 @@ public class IPrincipalCom extends javax.swing.JFrame {
       btnTrabajosPorCentro.setEnabled(true);
       btnProfesoresQuePresentaron.setEnabled(true);
       btnConsultar.setEnabled(true);
+      btnCargarProfesores.setEnabled(false);
+      btnCargarTrabajos.setEnabled(false);
     }
 }
 

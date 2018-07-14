@@ -308,5 +308,90 @@ public class Ctrl_Trabajos {
                     canti = 0;                    
                 }
             }
-    }      
+    }
+    public void reportarCentros(){
+         iReportesCentro.borrarTexto();
+         String[] arreglo;
+        arreglo = new String[] {"CCCT", "CCG", "CCPD", "CENEAC", "ISYS", "CICORE",
+        "IOMMA", "CISI"};
+        int[] arreglo2;
+        arreglo2 = new int[] {0,0,0,0,0,0,0,0};
+        
+         String dateFormat = "dd/MM/uuuu";
+         String a,b;
+         LocalDate x = LocalDate.parse("2014-01-01");
+         LocalDate y = LocalDate.parse("2018-12-31");
+         a=iReportesCentro.getFechaInicial();
+         b=iReportesCentro.getFechaFinal();
+         DateTimeFormatter dateTimeFormatter = DateTimeFormatter
+            .ofPattern(dateFormat)
+            .withResolverStyle(ResolverStyle.STRICT);
+         if (!(fechaVal(a,b))){
+        
+         }else{
+             x = LocalDate.parse(a,dateTimeFormatter);
+             y = LocalDate.parse(b,dateTimeFormatter);
+         }
+        int h= conjuntoProfs.getProfesor().size(); //numero de elementos en la lista
+        int j= conjuntoTrabj.getTrabajos().size();
+        String fecha;
+        String tutor;
+        String tutorx;
+        String tutory;
+        String centro;
+        String centrox="";
+        String centroy="";
+        int canti=0;
+            for(int i=0; i<h;i++){
+                tutor=conjuntoProfs.getProfesor().get(i).getCedula();
+                centro=conjuntoProfs.getProfesor().get(i).getCentro();
+                for(int s=0; s<j;s++){
+                    fecha=conjuntoTrabj.getTrabajos().get(s).getFechaDefensa();
+                    tutorx=conjuntoTrabj.getTrabajos().get(s).getCi_t();
+                    tutory=conjuntoTrabj.getTrabajos().get(s).getCi_t2();
+                    LocalDate z = LocalDate.parse(fecha,dateTimeFormatter);
+                    if (fechaDentro(x,y,z)){
+                        if (tutor.equals(tutorx) || tutor.equals(tutory)){
+                            for(int m=0; m<h;m++){
+                                if (tutorx.equals(conjuntoProfs.getProfesor()
+                                    .get(i).getCedula())){
+                                        centrox=conjuntoProfs.getProfesor()
+                                    .get(i).getCentro();
+                                }
+                                if (tutory.equals(conjuntoProfs.getProfesor()
+                                    .get(i).getCedula())){
+                                        centroy=conjuntoProfs.getProfesor()
+                                    .get(i).getCentro();
+                                }
+                            }
+                            if (centrox.equals(centroy)){
+                                for(int u=0;u<8;u++){
+                                    if (centrox.equals(arreglo[u])){
+                                        arreglo2[u]++;
+                                    }
+                                }
+                            }else{
+                                for(int u=0;u<8;u++){
+                                    if (centrox.equals(arreglo[u])){
+                                        arreglo2[u]++;
+                                    }
+                                }
+                                for(int u=0;u<8;u++){
+                                    if (centroy.equals(arreglo[u])){
+                                        arreglo2[u]++;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }   
+                
+            }
+            for (int p=0; p<8;p++){
+                iReportesCentro.mostrar(arreglo[p]);
+                iReportesCentro.mostrar(" ");
+                iReportesCentro.mostrar(Integer.toString(arreglo2[p]));
+                iReportesCentro.mostrar("\n");
+                }
+    }
  }
